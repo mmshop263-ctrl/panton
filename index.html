@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Пантон на Волге — Уединенный отдых</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<style>
+  /* Общие стили */
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background: #f0f8ff;
+    color: #333;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* Хедер */
+header {
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
+  color: #fff;
+  padding: 40px 20px;
+  text-align: center;
+}
+header h1 {
+  font-size: 3em;
+  margin-bottom: 10px;
+}
+
+/* Разделы с фоном и эффектами */
+section {
+  padding: 50px 20px;
+  max-width: 1200px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.95);
+  margin-top: 40px;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 1s ease;
+}
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+section h2 {
+  text-align: center;
+  font-size: 2.8em;
+  color: #00796b;
+  margin-bottom: 20px;
+}
+section p {
+  max-width: 900px;
+  margin: 0 auto 20px auto;
+  font-size: 1.2em;
+  line-height: 1.5;
+  text-align: center;
+}
+
+/* Фоновые изображения для разделов */
+#about {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+#about::after {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 15px;
+}
+#about h2, #about p {
+  position: relative;
+  z-index: 1;
+  color: #fff;
+}
+
+/* Галерея - современная с CSS Grid */
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 15px;
+  margin-top: 30px;
+}
+#gallery img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+#gallery img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+}
+
+/* Раздел "Активности" */
+#activities {
+  background-color: #e0f7fa;
+}
+#activities h2 {
+  color: #00695c;
+}
+.activities {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+.activity {
+  background: #fff;
+  flex: 1 1 250px;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.activity:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+}
+.activity h3 {
+  margin-top: 0;
+  color: #00796b;
+  font-size: 1.5em;
+  text-align: center;
+}
+.activity p {
+  font-size: 1em;
+  text-align: center;
+}
+
+/* Раздел "Цены" */
+#pricing {
+  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  position: relative;
+}
+#pricing::after {
+  content: "";
+  position: absolute;
+  top:0; left:0; right:0; bottom:0;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+}
+.price {
+  position: relative;
+  z-index: 1;
+  padding: 30px 20px;
+  background: rgba(255,255,255,0.8);
+  border-radius: 15px;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+.price h3 {
+  font-size: 2em;
+  color: #bf360c;
+  margin-bottom: 20px;
+  text-align: center;
+}
+.price ul {
+  list-style: none;
+  padding: 0;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.price li {
+  margin: 10px 0;
+  padding-left: 20px;
+  position: relative;
+}
+.price li::before {
+  content: "\f058"; /* Font Awesome check icon */
+  font-family: "Font Awesome 6 Free";
+  font-weight: 900;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #388e3c;
+}
+.btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #00bcd4, #2196f3);
+  color: #fff;
+  padding: 15px 30px;
+  border-radius: 30px;
+  font-size: 1.2em;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: all 0.3s;
+}
+.btn:hover {
+  background: linear-gradient(135deg, #2196f3, #00bcd4);
+  transform: translateY(-3px);
+}
+
+/* Контакты */
+#contacts {
+  background-color: #eceff1;
+}
+#contacts h2 {
+  color: #37474f;
+}
+.contacts {
+  max-width: 600px;
+  margin: 20px auto;
+  font-size: 1.2em;
+  text-align: center;
+}
+.contacts p {
+  margin: 10px 0;
+}
+footer {
+  background: #222;
+  color: #fff;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  font-size: 1em;
+}
+
+/* Анимации плавного появления */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.animate {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeInUp 1s forwards;
+}
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Пантон на Волге</h1>
+</header>
+
+<!-- Раздел "О месте" -->
+<section id="about" class="animate" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
+  <div style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 15px;">
+    <h2 style="color:#fff; font-size:2.8em;">Уединенный дом на Волге</h2>
+    <p style="color:#fff;">На уединенном острове на Волге вас ждет тишина, природа и великолепные виды. Переправа из г. Саратова включена в стоимость — удобно и быстро!</p>
+  </div>
+</section>
+
+<!-- Раздел "Галерея" -->
+<section id="gallery" class="animate">
+  <h2>Галерея пантона и природы</h2>
+  <div id="gallery-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px;">
+    <img src="https://images.unsplash.com/photo-1602503420524-8d7f4b65a4a0?alt=auto&fit=crop&w=600&q=80" alt="Понтон на Волге" />
+    <img src="https://images.unsplash.com/photo-1616718879330-0d6f0f8522a4?alt=auto&fit=crop&w=600&q=80" alt="Пантон и природа" />
+    <img src="https://images.unsplash.com/photo-1616745070872-7b0b7b7f8b6f?alt=auto&fit=crop&w=600&q=80" alt="Панорама на Волгу" />
+    <img src="https://images.unsplash.com/photo-1623433771612-8b6f8d1a0e7a?alt=auto&fit=crop&w=600&q=80" alt="Панорама с пантоном" />
+    <!-- Новые фотографии -->
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Понтон на Волге" />
+    <img src="https://images.unsplash.com/photo-1549887534-7c68084424f7?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Вид на реку и пантон" />
+    <img src="https://images.unsplash.com/photo-1536746243144-229f8fa2d7a6?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Понтон окружен природой" />
+    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Вид на Волгу с пантоном" />
+    <img src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Закат с пантоном" />
+  </div>
+</section>
+
+<!-- Активности -->
+<section id="activities" class="animate">
+  <h2>Активный отдых и развлечения</h2>
+  <div class="activities">
+    <div class="activity" onclick="alert('Забронировать SUP доски!')">
+      <h3><i class="fas fa-water"></i> SUP доски</h3>
+      <p>Насладитесь плаванием на досках Stand Up Paddle и исследуйте реку.</p>
+    </div>
+    <div class="activity" onclick="alert('Забронировать лодку!')">
+      <h3><i class="fas fa-ship"></i> Лодка и вёсла</h3>
+      <p>Устройте прогулку на уютной лодке — спокойствие и удовольствие.</p>
+    </div>
+    <div class="activity" onclick="alert('Забронировать вейкборд или ватрушку!')">
+      <h3><i class="fas fa-bolt"></i> Вейкборд и ватрушки</h3>
+      <p>Для любителей экстрима — катание за катером на вейкборде и ватрушке.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Цены -->
+<section id="pricing" class="animate">
+  <h2>Стоимость и условия</h2>
+  <div class="price">
+    <h3>Всё включено — от 3000 руб./сутки</h3>
+    <p>Стоимость включает: проживание, переправу и развлечения.</p>
+    <ul>
+      <li>Проживание в уютном доме</li>
+      <li>Переправа из г. Саратова</li>
+      <li>Развлечения по вашему желанию</li>
+    </ul>
+    <button class="btn" onclick="alert('Забронировать сейчас!')">Забронировать</button>
+  </div>
+</section>
+
+<!-- Контакты -->
+<section id="contacts" class="animate">
+  <h2>Контакты</h2>
+  <div class="contacts">
+    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@volga-panton.ru">info@volga-panton.ru</a></p>
+    <p><i class="fas fa-phone"></i> Телефон: +7 (123) 456-78-90</p>
+    <p><i class="fas fa-map-marker-alt"></i> Адрес: Уединенный остров, Волга, Россия</p>
+  </div>
+</section>
+
+<!-- Подвал -->
+<footer>
+  &copy; 2024 Пантон на Волге. Все права защищены.
+</footer>
+
+<!-- Скрипты -->
+<script>
+  // Анимация появления секций
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('.animate').forEach(sec => {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('show');
+            obs.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+      observer.observe(sec);
+    });
+  });
+
+  // Просмотр изображений на полный экран
+  document.querySelectorAll('#gallery-container img').forEach(img => {
+    img.addEventListener('click', () => {
+      const overlay = document.createElement('div');
+      overlay.style.position = 'fixed';
+      overlay.style.top = 0; overlay.style.left = 0;
+      overlay.style.width = '100%'; overlay.style.height = '100%';
+      overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
+      overlay.style.display = 'flex';
+      overlay.style.alignItems = 'center';
+      overlay.style.justifyContent = 'center';
+      overlay.style.cursor = 'pointer';
+      overlay.innerHTML = `<img src="${img.src}" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.5);" />`;
+      document.body.appendChild(overlay);
+      overlay.addEventListener('click', () => {
+        document.body.removeChild(overlay);
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
