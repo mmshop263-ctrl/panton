@@ -17,6 +17,30 @@
     color: #333;
     line-height: 1.6;
     scroll-behavior: smooth;
+    position: relative;
+  }
+
+  /* Добавляем анимацию волн */
+  #background-wave {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: -1;
+    background: radial-gradient(circle at 50% 50%, rgba(135, 206, 250, 0.3), transparent),
+                radial-gradient(circle at 20% 70%, rgba(255, 255, 255, 0.2), transparent),
+                radial-gradient(circle at 80% 30%, rgba(255, 255, 255, 0.2), transparent);
+    background-repeat: repeat;
+    background-size: 300px 300px;
+    animation: moveWaves 60s linear infinite;
+  }
+
+  @keyframes moveWaves {
+    0% {
+      background-position: 0 0, 0 0, 0 0;
+    }
+    100% {
+      background-position: 100px 100px, 50px 50px, 150px 150px;
+    }
   }
 
   /* Шапка сайта */
@@ -361,6 +385,9 @@ footer {
 </style>
 </head>
 <body>
+
+<!-- Фоновые волны -->
+<div id="background-wave"></div>
 
 <!-- Шапка сайта -->
 <header>
