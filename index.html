@@ -107,10 +107,10 @@ section p:hover {
 }
 .gallery-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-template-columns: repeat(3, 1fr);
     gap: 20px;
+    justify-items: center;
 }
-/* Карточки изображений */
 .gallery-item {
     position: relative;
     overflow: hidden;
@@ -119,7 +119,8 @@ section p:hover {
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     cursor: pointer;
     backdrop-filter: blur(4px);
-    transition: transform 0.4s, box-shadow 0.4s, background 0.3s;
+    width: 100%;
+    max-width: 350px; /* ограничение ширины */
 }
 .gallery-item:hover {
     transform: scale(1.03);
@@ -128,13 +129,12 @@ section p:hover {
 }
 .gallery-item img {
     width: 100%;
-    height: 200px;
+    height: 250px; /* увеличено по высоте */
     object-fit: cover;
     display: block;
     border-radius: 15px;
     transition: filter 0.3s, transform 0.3s;
 }
-/* подписи */
 .gallery-caption {
     position: absolute;
     bottom: 0;
