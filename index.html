@@ -95,49 +95,66 @@ section p:hover {
     transform: scale(1.02);
 }
 
-/* Галерея с эффектами наведения */
+/* --- Обновленная галерея --- */
 #gallery {
+    padding: 50px 20px;
+}
+#gallery h2 {
+    text-align: center;
+    font-size: 2.8em;
+    color: #00796b;
+    margin-bottom: 30px;
+}
+.gallery-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
+    gap: 20px;
 }
+/* Карточки изображений */
 .gallery-item {
     position: relative;
     overflow: hidden;
-    border-radius: 10px;
+    border-radius: 15px;
+    background: rgba(255,255,255,0.15);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    transition: transform 0.3s, box-shadow 0.3s;
+    backdrop-filter: blur(4px);
+    transition: transform 0.4s, box-shadow 0.4s, background 0.3s;
+}
+.gallery-item:hover {
+    transform: scale(1.03);
+    box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.2);
 }
 .gallery-item img {
     width: 100%;
     height: 200px;
     object-fit: cover;
     display: block;
-    transition: transform 0.3s, filter 0.3s;
+    border-radius: 15px;
+    transition: filter 0.3s, transform 0.3s;
 }
-.gallery-item:hover img {
-    transform: scale(1.05);
-    filter: brightness(1.1);
-}
+/* подписи */
 .gallery-caption {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: rgba(0, 0, 0, 0.4);
+    padding: 12px;
+    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
     color: #fff;
-    padding: 10px;
+    font-weight: 600;
+    font-size: 1.1em;
     text-align: center;
     opacity: 0;
     transition: opacity 0.3s, transform 0.3s;
 }
 .gallery-item:hover .gallery-caption {
     opacity: 1;
-    transform: translateY(-10px);
+    transform: translateY(-5px);
 }
 
+/* --- Остальные стили без изменений --- */
 /* Активности */
 #activities {
     background-color: #e0f7fa;
@@ -272,7 +289,6 @@ section p:hover {
 .contacts p {
     margin: 10px 0;
 }
-
 /* Кнопки связи овальные и адаптивные */
 .contact-buttons {
   margin-top:20px; 
@@ -361,7 +377,7 @@ footer {
 <!-- Галерея -->
 <section id="gallery" class="animate">
   <h2>Галерея пантона и природы</h2>
-  <div id="gallery-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px;">
+  <div class="gallery-container">
     <div class="gallery-item">
       <img src="Ph1.jpg" alt="Понтон на Волге" />
       <div class="gallery-caption">Понтон на Волге</div>
@@ -422,14 +438,13 @@ footer {
   </div>
 </section>
 
-<!-- Контакты и кнопки связи -->
+<!-- Контакты -->
 <section id="contacts" class="animate">
   <h2>Контакты</h2>
   <div class="contacts">
     <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@volga-panton.ru">info@volga-panton.ru</a></p>
     <p><i class="fas fa-phone"></i> Телефон: +7 (999) 539-00-37</p>
     <p><i class="fas fa-map-marker-alt"></i> Адрес: Волга, Россия</p>
-    <!-- Кнопки связи -->
     <div class="contact-buttons">
       <a href="https://wa.me/79995390037" target="_blank" rel="noopener noreferrer" class="contact-btn whatsapp" title="Связаться в WhatsApp">
         <i class="fab fa-whatsapp"></i> WhatsApp
@@ -467,18 +482,18 @@ footer {
   });
 
   // Просмотр изображений на полный экран
-  document.querySelectorAll('#gallery-container .gallery-item').forEach(item => {
+  document.querySelectorAll('.gallery-item').forEach(item => {
     item.addEventListener('click', () => {
       const overlay = document.createElement('div');
       overlay.style.position = 'fixed';
-      overlay.style.top = 0; overlay.style.left = 0;
+      overlay.style.top = '0'; overlay.style.left = '0';
       overlay.style.width = '100%'; overlay.style.height = '100%';
       overlay.style.backgroundColor = 'rgba(0,0,0,0.8)';
       overlay.style.display = 'flex';
       overlay.style.alignItems = 'center';
       overlay.style.justifyContent = 'center';
       overlay.style.cursor = 'pointer';
-      overlay.innerHTML = `<img src="${item.querySelector('img').src}" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s ease;" />`;
+      overlay.innerHTML = `<img src="${item.querySelector('img').src}" style="max-width:90%; max-height:90%; border-radius:15px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s ease;" />`;
       document.body.appendChild(overlay);
       overlay.addEventListener('click', () => {
         document.body.removeChild(overlay);
