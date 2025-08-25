@@ -273,26 +273,30 @@ section p:hover {
     margin: 10px 0;
 }
 
-/* Кнопки связаться */
+/* Кнопки связи овальные и адаптивные */
 .contact-buttons {
   margin-top:20px; 
   display:flex; 
+  flex-wrap: wrap;
   gap:15px; 
-  justify-content:center;
+  justify-content: center;
 }
 .contact-btn {
   display: flex;
   align-items: center;
-  padding: 10px 15px;
-  border-radius: 8px;
+  padding: 12px 20px;
+  border-radius: 50px; /* овальная форма */
   font-weight: 600;
   font-size: 1em;
   color: #fff;
   text-decoration: none;
   transition: background 0.3s, transform 0.2s;
+  min-width: 140px;
+  max-width: 200px;
+  justify-content: center;
 }
 .contact-btn i {
-  margin-right: 8px;
+  margin-right: 10px;
   font-size: 1.2em;
 }
 .contact-btn.whatsapp {
