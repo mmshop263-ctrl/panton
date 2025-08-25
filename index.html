@@ -108,7 +108,7 @@ section p:hover {
 .gallery-container {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 20px;
+    gap: 10px; /* уменьшил с 20px до 10px */
     justify-items: center;
 }
 .gallery-item {
@@ -129,30 +129,12 @@ section p:hover {
 }
 .gallery-item img {
     width: 100%;
-    height: auto; /* увеличено для меньших пустых пространств */
-    max-height: 600px; /* ограничение по высоте, чтобы изображения были крупнее */
+    height: auto;
+    max-height: 600px;
     object-fit: cover;
     display: block;
     border-radius: 15px;
     transition: filter 0.3s, transform 0.3s;
-}
-.gallery-caption {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 12px;
-    background: linear-gradient(to top, rgba(0,0,0,0.6), rgba(0,0,0,0));
-    color: #fff;
-    font-weight: 600;
-    font-size: 1.1em;
-    text-align: center;
-    opacity: 0;
-    transition: opacity 0.3s, transform 0.3s;
-}
-.gallery-item:hover .gallery-caption {
-    opacity: 1;
-    transform: translateY(-5px);
 }
 
 /* --- Остальные стили без изменений --- */
