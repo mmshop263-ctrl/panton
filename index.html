@@ -19,256 +19,330 @@
     scroll-behavior: smooth;
   }
 
-  /* Хедер */
-header {
-  background: linear-gradient(135deg, #00bcd4, #2196f3);
-  color: #fff;
-  padding: 40px 20px;
-  text-align: center;
-}
-header h1 {
-  font-size: 3em;
-  margin-bottom: 10px;
-}
+  /* Шапка сайта */
+  header {
+    background: transparent;
+    padding: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: none;
+  }
+  header h1 {
+    font-size: 2.5em;
+    color: #00796b;
+    margin: 0;
+    letter-spacing: 2px;
+    font-weight: 700;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  }
 
-/* Разделы с фоном и эффектами */
+  /* Общие стили разделов */
 section {
-  padding: 50px 20px;
-  max-width: 1200px;
-  margin: auto;
-  background: rgba(255, 255, 255, 0.95);
-  margin-top: 40px;
-  border-radius: 15px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 1s ease;
+    padding: 50px 20px;
+    max-width: 1200px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s ease, box-shadow 0.3s ease;
 }
 section.show {
-  opacity: 1;
-  transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
 }
 section h2 {
-  text-align: center;
-  font-size: 2.8em;
-  color: #00796b;
-  margin-bottom: 20px;
+    text-align: center;
+    font-size: 2.8em;
+    color: #00796b;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 section p {
-  max-width: 900px;
-  margin: 0 auto 20px auto;
-  font-size: 1.2em;
-  line-height: 1.5;
-  text-align: center;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+    font-size: 1.2em;
+    line-height: 1.5;
+    text-align: center;
+}
+section p:hover {
+    color: #00695c;
 }
 
 /* Фоновые изображения для разделов */
 #about {
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  position: relative;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    position: relative;
 }
 #about::after {
-  content: "";
-  position: absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0, 0, 0, 0.4);
-  border-radius: 15px;
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
 }
 #about h2, #about p {
-  position: relative;
-  z-index: 1;
-  color: #fff;
+    position: relative;
+    z-index: 1;
+    color: #fff;
+    transition: transform 0.3s ease;
+}
+#about h2:hover, #about p:hover {
+    transform: scale(1.02);
 }
 
-/* Галерея - современная с CSS Grid */
+/* Галерея с эффектами наведения */
 #gallery {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 15px;
-  margin-top: 30px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    margin-top: 30px;
 }
-#gallery img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 10px;
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-#gallery img:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+.gallery-item img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s, filter 0.3s;
+}
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+.gallery-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    opacity: 0;
+    transition: opacity 0.3s, transform 0.3s;
+}
+.gallery-item:hover .gallery-caption {
+    opacity: 1;
+    transform: translateY(-10px);
 }
 
-/* Раздел "Активности" */
+/* Активности */
 #activities {
-  background-color: #e0f7fa;
+    background-color: #e0f7fa;
+    transition: background-color 0.3s ease;
 }
 #activities h2 {
-  color: #00695c;
+    color: #00695c;
+    transition: color 0.3s ease;
 }
 .activities {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 .activity {
-  background: #fff;
-  flex: 1 1 250px;
-  padding: 20px;
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  cursor: pointer;
-  transition: transform 0.3s, box-shadow 0.3s;
+    background: #fff;
+    flex: 1 1 250px;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 .activity:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    transform: translateY(-8px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.2);
+    background: #f1f1f1;
 }
 .activity h3 {
-  margin-top: 0;
-  color: #00796b;
-  font-size: 1.5em;
-  text-align: center;
+    margin-top: 0;
+    color: #00796b;
+    font-size: 1.5em;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.activity h3:hover {
+    color: #004d40;
+    transform: scale(1.05);
 }
 .activity p {
-  font-size: 1em;
-  text-align: center;
+    font-size: 1em;
+    text-align: center;
+    transition: color 0.3s ease;
 }
 
-/* Раздел "Цены" */
+/* Цены */
 #pricing {
-  background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
-  background-size: cover;
-  background-position: center;
-  color: #fff;
-  position: relative;
+    background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    position: relative;
 }
 #pricing::after {
-  content: "";
-  position: absolute;
-  top:0; left:0; right:0; bottom:0;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 15px;
+    content: "";
+    position: absolute;
+    top:0; left:0; right:0; bottom:0;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
 }
 .price {
-  position: relative;
-  z-index: 1;
-  padding: 30px 20px;
-  background: rgba(255,255,255,0.8);
-  border-radius: 15px;
-  max-width: 800px;
-  margin: 0 auto;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 1;
+    padding: 30px 20px;
+    background: rgba(255,255,255,0.8);
+    border-radius: 15px;
+    max-width: 800px;
+    margin: 0 auto;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 .price h3 {
-  font-size: 2em;
-  color: #bf360c;
-  margin-bottom: 20px;
-  text-align: center;
+    font-size: 2em;
+    color: #bf360c;
+    margin-bottom: 20px;
+    text-align: center;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+.price h3:hover {
+    color: #ff5722;
+    transform: scale(1.05);
 }
 .price ul {
-  list-style: none;
-  padding: 0;
-  font-size: 1.2em;
-  margin-bottom: 20px;
+    list-style: none;
+    padding: 0;
+    font-size: 1.2em;
+    margin-bottom: 20px;
 }
 .price li {
-  margin: 10px 0;
-  padding-left: 20px;
-  position: relative;
+    margin: 10px 0;
+    padding-left: 20px;
+    position: relative;
 }
 .price li::before {
-  content: "\f058"; /* Font Awesome check icon */
-  font-family: "Font Awesome 6 Free";
-  font-weight: 900;
-  position: absolute;
-  left: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  color: #388e3c;
+    content: "\f058"; /* Font Awesome check icon */
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #388e3c;
 }
 .btn {
-  display: inline-block;
-  background: linear-gradient(135deg, #00bcd4, #2196f3);
-  color: #fff;
-  padding: 15px 30px;
-  border-radius: 30px;
-  font-size: 1.2em;
-  cursor: pointer;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: all 0.3s;
+    display: inline-block;
+    background: linear-gradient(135deg, #00bcd4, #2196f3);
+    color: #fff;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
 }
 .btn:hover {
-  background: linear-gradient(135deg, #2196f3, #00bcd4);
-  transform: translateY(-3px);
+    background: linear-gradient(135deg, #2196f3, #00bcd4);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
 }
 
 /* Контакты */
 #contacts {
-  background-color: #eceff1;
+    background-color: #eceff1;
 }
 #contacts h2 {
-  color: #37474f;
+    color: #37474f;
 }
 .contacts {
-  max-width: 600px;
-  margin: 20px auto;
-  font-size: 1.2em;
-  text-align: center;
+    max-width: 600px;
+    margin: 20px auto;
+    font-size: 1.2em;
+    text-align: center;
 }
 .contacts p {
-  margin: 10px 0;
+    margin: 10px 0;
 }
 footer {
-  background: #222;
-  color: #fff;
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 1em;
+    background: #222;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+    font-size: 1em;
 }
 
 /* Анимации плавного появления */
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 .animate {
-  opacity: 0;
-  transform: translateY(30px);
-  animation: fadeInUp 1s forwards;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s forwards;
 }
 </style>
 </head>
 <body>
 
+<!-- Шапка сайта -->
 <header>
   <h1>Пантон на Волге</h1>
 </header>
 
 <!-- Раздел "О месте" -->
 <section id="about" class="animate" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80'); background-size: cover; background-position: center;">
-  <div style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 15px;">
+  <div style="background: rgba(0,0,0,0.4); padding: 40px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: box-shadow 0.3s ease;">
     <h2 style="color:#fff; font-size:2.8em;">Уединенный дом на Волге</h2>
     <p style="color:#fff;">На уединенном острове на Волге вас ждет тишина, природа и великолепные виды. Переправа из г. Саратова включена в стоимость — удобно и быстро!</p>
   </div>
 </section>
 
-<!-- Раздел "Галерея" -->
+<!-- Галерея -->
 <section id="gallery" class="animate">
   <h2>Галерея пантона и природы</h2>
   <div id="gallery-container" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap:15px;">
-    <!-- Новые фотографии -->
-    <img src="Ph1.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Понтон на Волге" />
-     <img src="Ph3.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Вид на реку и пантон" />
-     <img src="Ph4.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Понтон окружен природой" />
-     <img src="Ph5.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Вид на Волгу с пантоном" />
-     <img src="Ph2.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Вид на Волгу с пантоном" />
-     <img src="Ph6.jpg?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Закат с пантоном" />
+    <div class="gallery-item">
+      <img src="Ph1.jpg" alt="Понтон на Волге" />
+      <div class="gallery-caption">Понтон на Волге</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Ph3.jpg" alt="Вид на реку и пантон" />
+      <div class="gallery-caption">Вид на реку и пантон</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Ph4.jpg" alt="Понтон окружен природой" />
+      <div class="gallery-caption">Понтон окружен природой</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Ph5.jpg" alt="Вид на Волгу с пантоном" />
+      <div class="gallery-caption">Вид на Волгу с пантоном</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Ph2.jpg" alt="Вид на Волгу с пантоном" />
+      <div class="gallery-caption">Вид на Волгу с пантоном</div>
+    </div>
+    <div class="gallery-item">
+      <img src="Ph6.jpg" alt="Закат с пантоном" />
+      <div class="gallery-caption">Закат с пантоном</div>
+    </div>
   </div>
 </section>
 
@@ -300,7 +374,6 @@ footer {
     <ul>
       <li>Проживание в уютном доме</li>
       <li>Переправа из г. Саратова</li>
-    
     </ul>
     <button class="btn" onclick="alert('Забронировать сейчас!')">Забронировать</button>
   </div>
@@ -312,7 +385,7 @@ footer {
   <div class="contacts">
     <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@volga-panton.ru">info@volga-panton.ru</a></p>
     <p><i class="fas fa-phone"></i> Телефон: +7 (999) 539-00-37</p>
-    <p><i class="fas fa-map-marker-alt"></i> Адрес: , Волга, Россия</p>
+    <p><i class="fas fa-map-marker-alt"></i> Адрес: Волга, Россия</p>
   </div>
 </section>
 
@@ -339,8 +412,8 @@ footer {
   });
 
   // Просмотр изображений на полный экран
-  document.querySelectorAll('#gallery-container img').forEach(img => {
-    img.addEventListener('click', () => {
+  document.querySelectorAll('#gallery-container .gallery-item').forEach(item => {
+    item.addEventListener('click', () => {
       const overlay = document.createElement('div');
       overlay.style.position = 'fixed';
       overlay.style.top = 0; overlay.style.left = 0;
@@ -350,7 +423,7 @@ footer {
       overlay.style.alignItems = 'center';
       overlay.style.justifyContent = 'center';
       overlay.style.cursor = 'pointer';
-      overlay.innerHTML = `<img src="${img.src}" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.5);" />`;
+      overlay.innerHTML = `<img src="${item.querySelector('img').src}" style="max-width:90%; max-height:90%; border-radius:10px; box-shadow:0 8px 20px rgba(0,0,0,0.5); transition: transform 0.3s ease;" />`;
       document.body.appendChild(overlay);
       overlay.addEventListener('click', () => {
         document.body.removeChild(overlay);
