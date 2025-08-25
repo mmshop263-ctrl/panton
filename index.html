@@ -20,7 +20,7 @@
     position: relative;
   }
 
-  /* Добавляем анимацию волн */
+  /* Анимация волн для фона */
   #background-wave {
     position: fixed;
     top: 0; left: 0;
@@ -33,34 +33,35 @@
     background-size: 300px 300px;
     animation: moveWaves 60s linear infinite;
   }
-
   @keyframes moveWaves {
-    0% {
-      background-position: 0 0, 0 0, 0 0;
-    }
-    100% {
-      background-position: 100px 100px, 50px 50px, 150px 150px;
-    }
+    0% { background-position: 0 0, 0 0, 0 0; }
+    100% { background-position: 100px 100px, 50px 50px, 150px 150px; }
   }
 
-  /* Шапка сайта */
+  /* Шапка сайта с плавным появлением */
   header {
     background: transparent;
     padding: 20px 0;
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: 'Montserrat', sans-serif;
   }
   header h1 {
-    font-size: 2.5em;
+    font-size: 2.8em;
     color: #00796b;
     margin: 0;
     letter-spacing: 2px;
     font-weight: 700;
-    text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+  }
+  @keyframes fadeIn {
+    to { opacity: 1; }
   }
 
-  /* Общие стили разделов */
+  /* Общие стили разделов с эффектом появления */
 section {
     padding: 50px 20px;
     max-width: 1200px;
@@ -95,7 +96,7 @@ section p:hover {
     color: #00695c;
 }
 
-/* Фоновые изображения для разделов */
+/* Стиль для раздела "О месте" с фоновой картинкой и затемнением */
 #about {
     background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
@@ -106,7 +107,7 @@ section p:hover {
     content: "";
     position: absolute;
     top:0; left:0; right:0; bottom:0;
-    background: rgba(0, 0, 0, 0.4);
+    background: rgba(0,0,0,0.4);
     border-radius: 15px;
 }
 #about h2, #about p {
@@ -119,7 +120,7 @@ section p:hover {
     transform: scale(1.02);
 }
 
-/* --- Обновленная галерея --- */
+/* Галерея */
 #gallery {
     padding: 50px 20px;
 }
@@ -131,7 +132,7 @@ section p:hover {
 }
 .gallery-container {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     justify-items: center;
 }
@@ -145,6 +146,7 @@ section p:hover {
     backdrop-filter: blur(4px);
     width: 100%;
     max-width: 350px;
+    transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
 }
 .gallery-item:hover {
     transform: scale(1.03);
@@ -153,8 +155,8 @@ section p:hover {
 }
 .gallery-item img {
     width: 100%;
-    height: auto; /* увеличено для меньших пустых пространств */
-    max-height: 600px; /* ограничение по высоте, чтобы изображения были крупнее */
+    height: auto;
+    max-height: 600px;
     object-fit: cover;
     display: block;
     border-radius: 15px;
@@ -179,8 +181,7 @@ section p:hover {
     transform: translateY(-5px);
 }
 
-/* --- Остальные стили без изменений --- */
-/* Активности */
+/* Активности и карточки */
 #activities {
     background-color: #e0f7fa;
     transition: background-color 0.3s ease;
@@ -226,7 +227,7 @@ section p:hover {
     transition: color 0.3s ease;
 }
 
-/* Цены */
+/* Цены и фоновое изображение */
 #pricing {
     background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
     background-size: cover;
@@ -314,7 +315,7 @@ section p:hover {
 .contacts p {
     margin: 10px 0;
 }
-/* Кнопки связи овальные и адаптивные */
+/* Кнопки связи */
 .contact-buttons {
   margin-top:20px; 
   display:flex; 
@@ -372,7 +373,7 @@ footer {
   font-size: 1em;
 }
 
-/* Анимации плавного появления */
+/* Анимации появления */
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(30px); }
     to { opacity: 1; transform: translateY(0); }
